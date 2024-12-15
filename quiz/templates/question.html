@@ -2,57 +2,39 @@
 <html>
   <head>
     <title>Quiz Question</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      h1 {
-        color: #333;
-      }
-      .question {
-        background-color: #f4f4f4;
-        padding: 15px;
-        margin-bottom: 20px;
-      }
-      .choices {
-        display: flex;
-        flex-direction: column;
-      }
-      .choice {
-        margin: 10px 0;
-        padding: 10px;
-        border: 1px solid #ddd;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      .choice:hover {
-        background-color: #e0e0e0;
-      }
-    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <h1>Quiz Question</h1>
-    <div class="question">
-      <p>{{ question.text }}</p>
-    </div>
-    <form method="post" action="{% url 'submit_answer' %}">
-      {% csrf_token %}
-      <input type="hidden" name="question_id" value="{{ question.id }}" />
-      <div class="choices">
-        {% for choice in question.choices %}
-        <button
-          type="submit"
-          name="choice_id"
-          value="{{ choice.id }}"
-          class="choice"
-        >
-          {{ choice.text }}
-        </button>
-        {% endfor %}
+  <body class="font-sans bg-gray-900 text-gray-200 py-8">
+    <div class="max-w-md mx-auto py-20">
+      <h1 class="text-3xl font-bold mb-6 text-center text-gray-100">
+        Quiz Question
+      </h1>
+
+      <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden mb-6">
+        <div class="p-6">
+          <p class="text-lg text-gray-300 font-medium">{{ question.text }}</p>
+        </div>
       </div>
-    </form>
+
+      <form method="post" action="{% url 'submit_answer' %}">
+        {% csrf_token %}
+        <input type="hidden" name="question_id" value="{{ question.id }}" />
+        <div class="space-y-4">
+          {% for choice in question.choices %}
+          <button
+            type="submit"
+            name="choice_id"
+            value="{{ choice.id }}"
+            class="w-full bg-gray-700 text-gray-300 font-semibold rounded-lg hover:bg-gray-600 hover:text-white transition-colors duration-300 px-4 py-3 flex items-center justify-center shadow-md"
+          >
+            <span>{{ choice.text }}</span>
+          </button>
+          {% endfor %}
+        </div>
+      </form>
+    </div>
   </body>
 </html>
