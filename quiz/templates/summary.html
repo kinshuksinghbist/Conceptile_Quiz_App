@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz Summary</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+      }
+      .summary {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .total {
+        color: #333;
+        font-size: 24px;
+      }
+      .correct {
+        color: green;
+      }
+      .incorrect {
+        color: red;
+      }
+      .restart-btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="summary">
+      <h1>Quiz Summary</h1>
+      <p class="total">Total Questions: {{ total_questions }}</p>
+      <p class="correct">Correct Answers: {{ correct_answers }}</p>
+      <p class="incorrect">Incorrect Answers: {{ incorrect_answers }}</p>
+      <a href="{% url 'start_quiz' %}" class="restart-btn">Start New Quiz</a>
+    </div>
+  </body>
+</html>

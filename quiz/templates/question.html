@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz Question</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      .question {
+        background-color: #f4f4f4;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+      .choices {
+        display: flex;
+        flex-direction: column;
+      }
+      .choice {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .choice:hover {
+        background-color: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Quiz Question</h1>
+    <div class="question">
+      <p>{{ question.text }}</p>
+    </div>
+    <form method="post" action="{% url 'submit_answer' %}">
+      {% csrf_token %}
+      <input type="hidden" name="question_id" value="{{ question.id }}" />
+      <div class="choices">
+        {% for choice in question.choices %}
+        <button
+          type="submit"
+          name="choice_id"
+          value="{{ choice.id }}"
+          class="choice"
+        >
+          {{ choice.text }}
+        </button>
+        {% endfor %}
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: django-quiz-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python manage.py makemigrations && python manage.py migrate && gunicorn quiz_app.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: quiz_app.settings
+      - key: DEBUG
+        value: False
+      - key: SECRET_KEY
+        value: django-insecure-5l2scp#p#9kih#yy4kq*%$n%tzhu+98o68av(sek2z+gmjfc#@
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
