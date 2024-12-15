@@ -22,7 +22,7 @@ A simple and elegant quiz application built using Django, Jinja templates, Tailw
 
 ## 💡 Why This Tech Stack?
 
-The choice for tailwindcss and sqlite db was made becuase they are fast and flexible. A SQLite DB doesnt require a server setup and tailwindcss is pug and play. 
+The choice for tailwindcss and sqlite db was made becuase they are fast and flexible. A SQLite DB doesnt require a server setup and tailwindcss is plug and play. 
 
 ---
 
