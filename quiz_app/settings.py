@@ -8,6 +8,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
+#i have exposed the secret key and debug here for ease of local setup. 
+#in production, these would be set as env variables and the lines could be deleted.
 SECRET_KEY = os.environ.get('SECRET_KEY')
 SECRET_KEY = "django-insecure-5l2scp#p#9kih#yy4kq*%$n%tzhu+98o68av(sek2z+gmjfc#@"
 
